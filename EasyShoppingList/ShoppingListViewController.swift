@@ -42,11 +42,17 @@ extension ShoppingListViewController {
             shoppingListTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0)
         ])
         
-        // Add Button to navigation bar
+        // Add Buttons to navigation bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addNewItem)
+        )
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(clearList)
         )
     }
 }
@@ -68,6 +74,11 @@ extension ShoppingListViewController {
         ac.addAction(action)
         
         present(ac, animated: true)
+    }
+    
+    @objc private func clearList() {
+        shoppingList.removeAll()
+        shoppingListTableView.reloadData()
     }
 }
 
