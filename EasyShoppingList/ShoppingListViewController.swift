@@ -12,7 +12,7 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource {
     private lazy var shoppingListTableView = setupShoppingListTable()
     private let cellID = "Cell"
     
-    private var shoppingList = ["Shopping Item", "Shopping Item", "Shopping Item", "Shopping Item", "Shopping Item"]
+    private var shoppingList = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +81,7 @@ extension ShoppingListViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = shoppingList[indexPath.row] + " " + String(indexPath.row + 1)
+        content.text = shoppingList[indexPath.row]
         cell.contentConfiguration = content
         return cell
     }
