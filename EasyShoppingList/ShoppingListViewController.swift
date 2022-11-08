@@ -60,8 +60,8 @@ extension ShoppingListViewController {
         
         let action = UIAlertAction(title: "Add", style: .default) { _ in
             guard let text = ac.textFields?[0].text else { return }
-            self.shoppingList.append(text)
-            self.shoppingListTableView.reloadData()
+            self.shoppingList.insert(text, at: 0)
+            self.shoppingListTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         
         ac.addTextField()
